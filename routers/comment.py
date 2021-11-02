@@ -11,9 +11,9 @@ import oauth2,cloudinary
 from typing import List
 from schemas import Caption
 
-router = APIRouter(prefix='/files')
-
-@router.post('/',response_model=schemas.File,tags=['file'])
+router = APIRouter(prefix='/comment')
+'''
+@router.post('/',response_model=schemas.Comment,tags=['file'])
 def comment(cap:str = Form(...) , file: UploadFile = File(...) ,db: Session = Depends(get_db), get_current_user: schemas.TokenData = Depends (oauth2.get_current_user)):
     result = cloudinary.uploader.upload(file.file)
     url = result.get("url")
@@ -26,3 +26,4 @@ def comment(cap:str = Form(...) , file: UploadFile = File(...) ,db: Session = De
 @router.get('/',response_model= List[schemas.File],tags=['file'])
 def getcomment(db: Session = Depends(get_db)):
     return db.query(models.Images).all()
+'''
