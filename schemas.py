@@ -11,7 +11,7 @@ class File(BaseModel):
 class ShowUser(BaseModel):
     name:str
     email:str
-    images : Optional[List[File]] = []
+    posts : Optional[List[File]] = []
     class Config():
         orm_mode=True
 
@@ -19,6 +19,13 @@ class User(BaseModel):
     name:str
     email:str
     password:str
+
+class Comment(BaseModel):
+    id:int
+    comment_text:str
+    post_id:int
+    class Config():
+        orm_mode=True
 
 
 
