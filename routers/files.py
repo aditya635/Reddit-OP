@@ -17,12 +17,12 @@ router = APIRouter(prefix='/files')
 def upload(cap:str = Form(...) , file: UploadFile = File(...) ,db: Session = Depends(get_db), get_current_user: schemas.TokenData = Depends (oauth2.get_current_user)):
     result = cloudinary.uploader.upload(file.file)
     url = result.get("url")
-    new_image = models.Images(caption=cap, url= url , user_id = get_current_user.id)
-    db.add(new_image)
+    new_post = models.Posts(caption=cap, url= url , user_id = get_current_user.id)
+    db.add(new_post)
     db.commit()
-    db.refresh(new_image)
-    return new_image
+    db.refresh(new_post)
+    return new_post
 
 @router.get('/',response_model= List[schemas.File],tags=['file'])
 def getfile(db: Session = Depends(get_db)):
-    return db.query(models.Images).all()
+    return db.query(models.Posts).all()
