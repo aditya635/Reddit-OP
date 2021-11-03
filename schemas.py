@@ -2,9 +2,9 @@ from pydantic import BaseModel
 from typing import Optional,List
 
 class Comment(BaseModel):
-    id:int
     comment_text:str
     post_id:int
+    user_id:int
     class Config():
         orm_mode=True
 
@@ -35,7 +35,9 @@ class User(BaseModel):
     email:str
     password:str
 
-
+class CommentPost(BaseModel):
+    post_id:int
+    comment_data:str
 
 class Login(BaseModel):
     username:str
