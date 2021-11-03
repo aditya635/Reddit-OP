@@ -12,6 +12,13 @@ from typing import List
 from schemas import Caption
 
 router = APIRouter(prefix='/comment')
+
+
+
+
+@router.post('/',response_model=schemas.Comment,tags=['comment'])
+def getcommentsonpost():
+    pass
 '''
 @router.post('/',response_model=schemas.Comment,tags=['file'])
 def comment(cap:str = Form(...) , file: UploadFile = File(...) ,db: Session = Depends(get_db), get_current_user: schemas.TokenData = Depends (oauth2.get_current_user)):

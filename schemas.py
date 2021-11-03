@@ -17,10 +17,16 @@ class File(BaseModel):
     class Config():
         orm_mode = True
 
+class Post(BaseModel):
+    url: str
+    caption :str
+    class Config():
+        orm_mode = True
+
 class ShowUser(BaseModel):
     name:str
     email:str
-    posts : Optional[List[File]] = []
+    posts : Optional[List[Post]] = []
     class Config():
         orm_mode=True
 

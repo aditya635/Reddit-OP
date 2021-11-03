@@ -12,6 +12,7 @@ class User(Base):
     email = Column(String, unique= True)
     password = Column(String)
     posts = relationship("Posts",  back_populates="creator")
+    comments = relationship("Comments",back_populates="creator")
 
 class Posts(Base):
     __tablename__ = "posts"
@@ -29,7 +30,9 @@ class Comments(Base):
     id = Column(Integer, primary_key=True, index=True)
     comment_text = Column(String)
     post_id = Column(Integer, ForeignKey('posts.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
     post = relationship("Posts",back_populates="comments")
+    creator = relationship("User",back_populates="comments")
 
 
 
