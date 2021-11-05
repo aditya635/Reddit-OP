@@ -13,6 +13,7 @@ class File(BaseModel):
     url: str
     caption :str
     user_id : int
+    upvote : int
     comments : Optional[List[Comment]] = []
     class Config():
         orm_mode = True
