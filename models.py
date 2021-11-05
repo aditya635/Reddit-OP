@@ -1,5 +1,6 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String,UniqueConstraint
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.expression import true
 from sqlalchemy_utils import EmailType,URLType
 from database import Base
 
@@ -39,7 +40,6 @@ class Comments(Base):
 class UpVote(Base):
     __tablename__ ="upvotepost"
 
-    id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'),primary_key=True)
     post_id = Column(Integer, ForeignKey('posts.id'),primary_key=True)
 
