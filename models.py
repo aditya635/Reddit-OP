@@ -43,6 +43,21 @@ class UpVote(Base):
     user_id = Column(Integer, ForeignKey('users.id'),primary_key=True)
     post_id = Column(Integer, ForeignKey('posts.id'),primary_key=True)
 
+class SubReddit(Base):
+    __tablename__ = "subreddit"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String,unique=True)
+    head = Column(Integer, ForeignKey('users.id'),primary_key=True)
+
+class SubredditPost(Base):
+    __tablename__ = "subpost"
+
+    sub_id = Column(Integer, ForeignKey('subreddit.id'),primary_key=True)
+    post_id = Column(Integer, ForeignKey('posts.id'),primary_key=True)
+
+
+
 
 
 
