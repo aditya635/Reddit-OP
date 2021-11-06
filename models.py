@@ -23,10 +23,10 @@ class Posts(Base):
     url = Column(URLType)
     upvote = Column(Integer, default=0)
     user_id = Column(Integer, ForeignKey('users.id'))
-    subreddit = Column(Integer, ForeignKey('subreddit.id'))
+    #subreddit = Column(Integer, ForeignKey('subreddit.id'))
     creator = relationship("User", back_populates="posts")
     comments = relationship("Comments",back_populates="post")
-    sub = relationship("SubReddit",back_populates="post")
+    #sub = relationship("SubReddit",back_populates="post")
     
     
 
@@ -52,7 +52,7 @@ class SubReddit(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String,unique=True)
     head = Column(Integer, ForeignKey('users.id'))
-    post = relationship("Posts",back_populates="sub")
+    #post = relationship("Posts",back_populates="sub")
 
 class SubredditPost(Base):
     __tablename__ = "subpost"
