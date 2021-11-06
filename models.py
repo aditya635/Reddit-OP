@@ -51,7 +51,7 @@ class SubReddit(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String,unique=True)
-    head = Column(Integer, ForeignKey('users.id'),primary_key=True)
+    head = Column(Integer, ForeignKey('users.id'))
     post = relationship("Posts",back_populates="sub")
 
 class SubredditPost(Base):
