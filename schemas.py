@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional,List
 
+from database import Base
+
 class Comment(BaseModel):
     comment_text:str
     post_id:int
@@ -56,3 +58,8 @@ class TokenData(BaseModel):
 
 class Caption(BaseModel):
     caption:str
+
+class Sub(BaseModel):
+    title:str
+    class Config():
+        orm_mode = True
