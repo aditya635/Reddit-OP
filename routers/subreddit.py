@@ -20,7 +20,7 @@ def sub(request:schemas.Sub,db: Session = Depends(get_db), get_current_user: sch
     db.commit()
     db.refresh(new_sub)
     return new_sub
-'''
+
 @router.get('/',response_model= List[schemas.File],tags=['file'])
 def getfile(db: Session = Depends(get_db)):
     return db.query(models.Posts).all()
@@ -28,4 +28,3 @@ def getfile(db: Session = Depends(get_db)):
 @router.get('/{post_id}',response_model= schemas.File,tags=['file'])
 def getfile(post_id:int,db: Session = Depends(get_db)):
     return db.query(models.Posts).filter(models.Posts.id == post_id).first()
-'''
