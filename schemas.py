@@ -26,6 +26,11 @@ class Post(BaseModel):
     class Config():
         orm_mode = True
 
+class Subred(BaseModel):
+    title:str
+    posts : Optional[List[File]] = []
+
+
 class ShowUser(BaseModel):
     name:str
     email:str

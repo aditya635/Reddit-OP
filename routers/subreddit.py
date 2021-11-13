@@ -21,6 +21,6 @@ def sub(request:schemas.Sub,db: Session = Depends(get_db), get_current_user: sch
     db.refresh(new_sub)
     return new_sub
 
-@router.get('/',response_model= List[schemas.Sub],tags=['file'])
+@router.get('/',response_model= List[schemas.Subred],tags=['sub'])
 def getfile(db: Session = Depends(get_db)):
     return db.query(models.SubReddit).all()
