@@ -11,7 +11,7 @@ import oauth2,cloudinary
 from typing import List
 from schemas import Caption
 
-router = APIRouter(prefix='/subreddit')
+router = APIRouter(prefix='/sub')
 
 @router.post('/',response_model=schemas.Sub,tags=['sub'])
 def sub(request:schemas.Sub,db: Session = Depends(get_db), get_current_user: schemas.TokenData = Depends (oauth2.get_current_user)):
