@@ -22,7 +22,7 @@ def upload( sub:int = Form(...) , cap:str = Form(...) , file: UploadFile = File(
     db.commit()
     db.refresh(new_post)
     ids = db.query(models.Posts).filter(models.Posts.id == new_post.id).first()
-    new_d = models.SubredditPost(sub_id = sub, post_id = ids)
+    new_d = models.SubredditPost(sub_id = sub, post_id = ids.id)
     db.add(new_d)
     db.commit()
     db.refresh(new_d)
