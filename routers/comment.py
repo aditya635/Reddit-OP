@@ -18,7 +18,7 @@ router = APIRouter(prefix='/comment')
 
 @router.post('/',response_model=schemas.Comment,tags=['comment'])
 def setcomment(request:schemas.CommentPost ,db: Session = Depends(get_db),get_current_user: schemas.TokenData = Depends (oauth2.get_current_user)):
-    new_comment = models.Comments(comment_text= request.comment_data,post_id=request.post_id, user_id = get_current_user.id)
+    new_comment = models.Comments(parent_id = request.parent_id,comment_text= request.comment_data,post_id=request.post_id, user_id = get_current_user.id)
     db.add(new_comment)
     db.commit()
     db.refresh(new_comment)

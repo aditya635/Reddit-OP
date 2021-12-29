@@ -45,6 +45,7 @@ class User(BaseModel):
 
 class CommentPost(BaseModel):
     post_id:int
+    parent_id :int
     comment_data:str
 
 class Login(BaseModel):
