@@ -34,7 +34,7 @@ class Comments(Base):
     __tablename__ = "comments"
 
     id = Column(Integer, primary_key=True, index=True)
-    parent_id = Column(Integer,unique=True)
+    parent_id = Column(Integer)
     comment_text = Column(String)
     post_id = Column(Integer, ForeignKey('posts.id'))
     user_id = Column(Integer, ForeignKey('users.id'))
